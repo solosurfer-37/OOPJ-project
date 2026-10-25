@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BorrowBuddy - Borrow less trouble. Share more.</title>
+<meta name="description" content="BorrowBuddy tracks shared items, due dates and honest reliability scores. Interactive frontend demo.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top" aria-label="BorrowBuddy home"><span class="mark"></span>BorrowBuddy</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+    <nav id="menu" class="menu" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#explore">Explore items</a>
+      <a href="#trust">Trust score</a>
+      <button class="link" id="signin">Sign in</button>
+      <a class="btn primary small" href="#explore">Get Started</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section dark hero" id="top">
+    <div class="wrap center">
+      <h1>Borrow less trouble.<br>Share more.</h1>
+      <p class="lead">One place to see who has your calculator, when it is due back, and whether the people you lend to return things.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#explore">Explore items</a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+      <p class="demo-note">Interactive demo. Everything runs in your browser and is saved in localStorage. It is not connected to the Java backend.</p>
+    </div>
+    <div class="scene" aria-hidden="true">
+      <div class="arc"></div>
+      <span class="chip c1">Meera lends</span>
+      <span class="chip c2">Aarav borrows, due in 5 days</span>
+      <div class="stack"><i></i><i></i><i></i></div>
+      <div class="calc"></div>
+      <div class="charger"></div>
+    </div>
+  </section>
+
+  <section class="section light" id="how">
+    <div class="wrap">
+      <h2 class="reveal">Lending, without the awkward follow-ups.</h2>
+      <ol class="steps">
+        <li class="reveal"><h3>List an item</h3><p>Add a book, charger or racquet in a few seconds. You decide who borrows it and for how long.</p></li>
+        <li class="reveal"><h3>Borrow with confidence</h3><p>Send a request. The owner approves it, and both of you see the due date and status.</p></li>
+        <li class="reveal"><h3>Return on time</h3><p>Mark it returned, or report it lost or damaged. Every outcome goes into the record.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section dark" id="explore">
+    <div class="wrap">
+      <h2 class="reveal">Everything your hostel already owns.</h2>
+      <p class="lead left">Open any item for details, then send a request.</p>
+      <div class="tools">
+        <label class="search"><span class="sr">Search items</span><input id="search" type="search" placeholder="Search by item or owner" autocomplete="off"></label>
+        <div class="filters" role="group" aria-label="Filter by category" id="filters">
+          <button aria-pressed="true" data-cat="All">All</button>
+          <button aria-pressed="false" data-cat="Books">Books</button>
+          <button aria-pressed="false" data-cat="Electronics">Electronics</button>
+          <button aria-pressed="false" data-cat="Sports">Sports</button>
+        </div>
+      </div>
+      <p class="count" id="count" aria-live="polite"></p>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="section light" id="flow">
+    <div class="wrap">
+      <h2 class="reveal">Every loan, one clear status.</h2>
+      <p class="lead left">Pick an item and move it through the loan yourself. The owner actions are simulated so you can try the whole flow.</p>
+      <div class="panel">
+        <div class="panel-top">
+          <label for="flowSelect">Item</label>
+          <select id="flowSelect"></select>
+        </div>
+        <div class="panel-body">
+          <dl class="facts" id="facts"></dl>
+          <div>
+            <ol class="track" id="track" aria-label="Loan progress"></ol>
+            <div class="actions" id="actions"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="trust">
+    <div class="wrap trust">
+      <div>
+        <h2 class="reveal">A score you can explain.</h2>
+        <p class="lead left">It starts at 100 and only moves when something actually happens: a late return, a lost item or a damaged one. Pending and rejected requests never count, and nobody can rate you.</p>
+        <ul class="formula">
+          <li><b>-5</b> each late return</li>
+          <li><b>-15</b> each damaged item</li>
+          <li><b>-30</b> each lost item</li>
+        </ul>
+      </div>
+      <div class="score" aria-live="polite">
+        <p class="who" id="scoreWho"></p>
+        <p class="big" id="scoreNum">100</p>
+        <div class="bar" role="img" id="scoreBar" aria-label="Score bar"><span id="scoreFill"></span></div>
+        <ul class="why" id="why"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light" id="activity">
+    <div class="wrap">
+      <h2 class="reveal">What needs attention.</h2>
+      <div class="cols">
+        <div><h3>Upcoming returns</h3><ul class="list" id="upcoming"></ul></div>
+        <div><h3>Overdue</h3><ul class="list" id="overdue"></ul></div>
+        <div><h3>Recent history</h3><ul class="list" id="history"></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark final">
+    <div class="wrap center">
+      <h2 class="reveal">Share responsibly.<br>Get things back.</h2>
+      <p class="lead">Start with one item on your shelf.</p>
+      <div class="cta-row"><a class="btn primary" href="#explore">Get Started</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>BorrowBuddy frontend demo. Sample data only; not connected to the Java backend.</p>
+    <button class="link" id="reset">Reset demo data</button>
+  </div>
+</footer>
+
+<dialog id="itemDlg" aria-labelledby="dlgTitle">
+  <form method="dialog" class="dlg-top"><button class="x" aria-label="Close">&times;</button></form>
+  <div id="dlgBody"></div>
+</dialog>
+
+<dialog id="signDlg" aria-labelledby="signTitle">
+  <form id="signForm" class="dlg-body">
+    <h3 id="signTitle">Sign in (demo)</h3>
+    <p class="small-note">No account or password. This only sets the name used for your requests and score.</p>
+    <label for="nameInput">Your name</label>
+    <input id="nameInput" maxlength="24" required>
+    <div class="actions"><button class="btn primary small" type="submit">Continue</button><button class="btn ghost-l small" type="button" id="signCancel">Cancel</button></div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
