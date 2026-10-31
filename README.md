@@ -1,4 +1,5 @@
-# Smart ATM Simulator
+# ATM Simulator
+Made by - Vansh Kumar , Rakshit Khanna 
 
 A simple ATM Simulator built using Core Java as a college OOP mini-project.
 
